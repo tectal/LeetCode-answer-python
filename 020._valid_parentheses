@@ -1,0 +1,19 @@
+# 此处用到栈的思想，先存放字符，再pop()去除最后一位字符与之前存入的字符进行比较
+
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        dict = {')':'(',']':'[','}':'{'}
+        
+        for i in s:
+            if i in dict:
+                top = stack.pop() if stack else '#'
+                if top != dict[i]:
+                    return False
+            else:
+                stack.append(i)
+        return not stack
