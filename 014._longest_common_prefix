@@ -1,0 +1,11 @@
+# os.path.commonprefix(list) 
+# 返回list中，所有path共有的最长的路径。 
+
+# 方法1
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        return os.path.commonprefix(strs)
