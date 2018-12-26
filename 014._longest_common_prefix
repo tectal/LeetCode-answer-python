@@ -1,7 +1,7 @@
+# 方法1
 # os.path.commonprefix(list) 
 # 返回list中，所有path共有的最长的路径。 
 
-# 方法1
 class Solution(object):
     def longestCommonPrefix(self, strs):
         """
@@ -9,3 +9,20 @@ class Solution(object):
         :rtype: str
         """
         return os.path.commonprefix(strs)
+
+# 方法2
+# 循环两次，先对列表strs里面第一个字符串每个单词进行循环，再对列表各个字符串相同位置的字母进行循环比较
+
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+        for i in range(len(strs[0])):
+            for str in strs:
+                if len(str) == i or strs[0][i] != str[i]:
+                    return strs[0][:i]
+        return strs[0]
