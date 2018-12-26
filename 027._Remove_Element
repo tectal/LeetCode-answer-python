@@ -1,0 +1,32 @@
+# 时间复杂度: O(N) 空间复杂度: O(1)
+# 方法1
+
+class Solution:
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        i = 0
+        while i<len(nums):
+            if nums[i] == val:
+                nums[i] = nums[-1]
+                del nums[-1]
+            else:
+                i+=1
+        return len(nums)
+
+# 时间复杂度: O(N^2) 空间复杂度: O(1)
+# 方法2
+
+class Solution:
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        while val in nums:
+            nums.remove(val)
+        return len(nums)
