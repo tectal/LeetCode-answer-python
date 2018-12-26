@@ -1,5 +1,6 @@
 # 0x7FFFFFFF是带符号的最大整数
 
+# 方法1
 # 按照参数正负号先将其转成字符串，然后再反转，根据是否溢出决定输出0还是反转结果
 class Solution(object):
     def reverse(self, x):
@@ -7,11 +8,18 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x < 0:
-            x = -int(str(x)[::-1][:-1])
-        else:
-            x = int(str(x)[::-1])
-         
-        if x < (-2**31) or x > (2**31-1) or x == 0:
-            x = 0
-        return x
+        x = -int(str(x)[::-1][:-1]) if x < 0 else int(str(x)[::-1])
+        return 0 if x < (-2**31) or x > (2**31-1) or x == 0 else x
+
+# 方法2
+# 记录符号，将数字当字符串处理，再判断是否阈值区间进行比较
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        s = 1 if x>=0  else -1
+        x = abs(x)
+        r = s * int(str(x)[::-1])
+        return r if -2**31 <= r <= 2**31-1 else 0
