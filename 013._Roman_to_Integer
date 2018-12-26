@@ -1,0 +1,25 @@
+# 从前往后扫描，用一个临时变量记录分段数字。如果当前比前一个大，说明这一段的值应当是这个值减去上一个值。比如IV = 5-1 =4; 
+# 否则，将当前值加入到结果中，然后开始下一段记录，比如VI = 5 + 1, II = 1 +1
+
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dict = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
+        }
+        f = 0
+        for i in range(len(s)):
+            if i>0 and dict[s[i]]>dict[s[i-1]]:
+                f += dict[s[i]] - 2 * dict[s[i-1]]
+            else:
+                f += dict[s[i]]
+        return f
