@@ -1,0 +1,32 @@
+# 方法1
+# python str.find() 底层实现是 Boyer–Moore–Horspool 算法
+# The time complexity is O(N) on average, O(NM) worst case (N being the length of the longer string, M, the shorter string you search for).
+
+class Solution():
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        return haystack.find(needle)
+        
+# 方法2
+
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        if not needle or len(needle) == 0:
+            return 0
+        for i in range(len(haystack)-len(needle)+1):
+            if haystack[i] == needle[0]:
+                j = 1
+                while j < len(needle) and haystack[i+j] == needle[j]:
+                    j += 1
+                if j == len(needle):
+                    return i
+        return -1
