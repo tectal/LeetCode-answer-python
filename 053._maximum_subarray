@@ -17,6 +17,7 @@ class Solution:
 # 动态规划（只关注：当前值和当前值+过去的状态，总和是变大还是变小）
 # ms(i) = max(ms[i-1]+ a[i],a[i])
 # 到i处的最大值两个可能，一个是加上a[i], 另一个从a[i]起头，重新开始。
+# 时间复杂度: O(N)  空间复杂度: O(1)
 
 class Solution(object):
     def maxSubArray(self, nums):
