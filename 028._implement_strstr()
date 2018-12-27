@@ -1,6 +1,7 @@
 # 方法1
 # python str.find() 底层实现是 Boyer–Moore–Horspool 算法
 # The time complexity is O(N) on average, O(NM) worst case (N being the length of the longer string, M, the shorter string you search for).
+# 时间复杂度:O(m*n) 空间复杂度:O(1)
 
 class Solution():
     def strStr(self, haystack, needle):
@@ -12,6 +13,7 @@ class Solution():
         return haystack.find(needle)
         
 # 方法2
+# 时间复杂度:O(m*n) 空间复杂度:O(1)
 
 class Solution(object):
     def strStr(self, haystack, needle):
