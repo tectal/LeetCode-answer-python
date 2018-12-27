@@ -1,3 +1,5 @@
+# 递归思想。如果digits是空列表直接加1；如果最后一位小于9，那么直接就最后一位加1，否则添加一个0，然后再把余下的递归加1。
+
 class Solution:
     def plusOne(self, digits):
         """
