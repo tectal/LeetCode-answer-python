@@ -1,0 +1,51 @@
+# 方法1
+# Top down，记忆化搜索, beats 96.64%
+# 时间复杂度: O(N)  空间复杂度: O(N)
+
+class Solution:
+    store = {
+            1: 1,
+            2: 2
+        }
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n in self.store:
+            return self.store[n]
+        self.store[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
+        return self.store[n]
+ 
+ # 方法2
+ # 采用bottom up思想, 动态规划，beats 96.64%
+ # 时间复杂度: O(N)  空间复杂度: O(N)
+ 
+ class Solution:
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        cache = [1] * (n+1)
+        for i in range(2, n+1):
+            cache[i] = cache[i-1] + cache[i-2]
+        return cache[-1]
+  
+# 方法3
+# bottom up，可以只存每次最后两个数，可以save space，这样只用constant space.
+# 只存3个元素，save space, beats 96.64%
+
+class Solution:
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        cache = [1, 2, 3]
+        if n < 4:
+            return cache[n-1]
+        for i in range(3, n+1):
+            cache[2] = cache[0] + cache[1]
+            cache[0], cache[1] = cache[1], cache[2]
+        return cache[2]
