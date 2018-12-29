@@ -1,0 +1,56 @@
+# 方法1
+# 递归思想
+# 时间复杂度: O(N)  空间复杂度: O(N)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        def bt(node, level, res):
+            if not node:
+                return
+            if len(res) < level:
+                res.append([])
+            res[level-1].append(node.val)
+            bt(node.left, level+1, res)
+            bt(node.right, level+1, res)  
+
+        res = []
+        bt(root, 1, res)
+        return res[::-1]
+        
+# 方法2
+# 迭代思想
+# 时间复杂度: O(N)  空间复杂度: O(N)
+
+class Solution:
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        cur_level = [root]
+        res = []
+        while cur_level:
+            nxt_level = []
+            tmp_res = []
+            for node in cur_level:
+                if node.left:
+                    nxt_level.append(node.left)
+                if node.right:
+                    nxt_level.append(node.right)
+                tmp_res.append(node.val)
+            cur_level = nxt_level
+            res.append(tmp_res)
+        return res[::-1]
