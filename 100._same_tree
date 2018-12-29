@@ -1,0 +1,41 @@
+# 方法1
+# 时间复杂度: O(N)  空间复杂度: O(1)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if not p and not q:
+            return True
+        if (p and not q) or (q and not p):
+            return False
+        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        
+# 方法2
+# 时间复杂度: O(N)  空间复杂度: O(1)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        return p.val == q.val and all(map(self.isSameTree, (p.left, p.right), (q.left, q.right))) if p and q else p is q
