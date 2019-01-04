@@ -1,0 +1,33 @@
+# 方法1
+# 时间复杂度：O(N)  空间复杂度：O(N)
+
+class Solution:
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dict = {}
+        for i in nums:
+            dict[i] = dict.get(i,0)+1
+        max_e = max(dict.values())
+        for j in nums:
+            if dict[j] == max_e:
+                return j
+# 方法2
+# 时间复杂度：O(N)  空间复杂度：O(1)
+# Boyer-Moore众数(majority number) 问题,在数组中找到两个不相同的元素并删除它们，不断重复此过程，直到数组中元素都相同，那么剩下的元素就是主要元素。
+# 这个算法在于不直接删除数组中的元素，而是利用一个计数变量.
+class Solution:
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count, candidate = 0, None
+
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count = count + 1 if num == candidate else count - 1
+        return candidate
