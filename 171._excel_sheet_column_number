@@ -1,0 +1,14 @@
+# 时间复杂度：O(N)  空间复杂度：O(1)
+
+class Solution:
+    def titleToNumber(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if len(s)==0 or not s:
+            return 0
+        res = 0
+        for i,x in enumerate(s):
+            res += (ord(x)-ord('A')+1) * (26**(len(s)-i-1))
+        return res
