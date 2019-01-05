@@ -1,0 +1,32 @@
+# 方法1
+# 超时
+
+class Solution:
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        s = 1
+        x = 0
+        while n>1:
+            s = s * n
+            n = n - 1
+        while s%10 == 0:
+            s = s//10
+            x = x+1
+        return x
+
+# 方法2
+# 时间复杂度：O(lgN)  空间复杂度：O(1)
+class Solution:
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        total = 0
+        while n >=5:
+            n = n//5
+            total+= n
+        return total
