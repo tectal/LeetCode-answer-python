@@ -1,0 +1,20 @@
+# MS SQL Server
+
+ELECT (
+    SELECT TOP 1
+        Salary
+    From Employee
+    WHERE Salary
+    Not IN (
+        SELECT 
+            MAX(Salary)
+        FROM employee)
+    Order by Salary desc
+) as SecondHighestSalary
+
+# MySQL
+
+select Salary SecondHighestSalary from Employee
+union
+select null
+order by SecondHighestSalary desc limit 1,1;
