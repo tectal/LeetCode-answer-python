@@ -1,0 +1,14 @@
+class Solution(object):
+    def isPerfectSquare(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        i = 2
+        sum = 1
+        while sum != num:
+            sum = i**2
+            i += 1
+            if sum > num:
+                return False
+        return True
