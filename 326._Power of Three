@@ -1,0 +1,13 @@
+class Solution(object):
+    def isPowerOfThree(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n == 1:
+            return True
+        s = len(str(n))
+        if n == 3**(2*s-1) or n == 3**(2*s):
+            return True
+        else:
+            return False
