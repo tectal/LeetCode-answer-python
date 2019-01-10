@@ -1,0 +1,14 @@
+class Solution:
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        base = {4, 16, 37, 58, 89, 145, 42, 20}
+        sums = sum(map(lambda x:x**2, map(int, str(n))))
+        if sums in base:
+            return False
+        if sums !=1:
+            return self.isHappy(sums)
+        else:
+            return True
