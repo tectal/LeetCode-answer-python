@@ -1,0 +1,28 @@
+# 方法1
+
+class Solution:
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        while num//10>=1:
+            tmp = 0
+            while num//10>=1:
+                tmp += num%10
+                num = num//10
+            tmp += num%10
+            num = tmp
+        return num
+        
+# 方法2
+
+class Solution:
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        if num == 0: 
+            return 0
+        return (num - 1) % 9 + 1
