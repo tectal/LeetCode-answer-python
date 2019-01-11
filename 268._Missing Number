@@ -1,0 +1,25 @@
+# 方法1
+# 时间复杂度：O(N)  空间复杂度：O(1)
+
+class Solution:
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return len(nums) * (len(nums) + 1) // 2 - sum(nums)
+        
+# 方法2
+# 时间复杂度：O(N)  空间复杂度：O(1)
+
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        res = n = len(nums)
+        for i in range(n):
+            res ^= i
+            res ^= nums[i]
+        return res
