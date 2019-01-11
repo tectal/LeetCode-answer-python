@@ -1,0 +1,13 @@
+class Solution:
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        def addnum(num):
+            res = 0
+            for i in range(len(num)-1,-1,-1):
+                res += int(num[i]) * pow(10,len(num)-i-1)
+            return res
+        return str(addnum(num1)+addnum(num2))
