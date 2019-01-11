@@ -1,0 +1,21 @@
+class Solution:
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        d = {}
+        a = []
+        for i,s in enumerate(nums1):
+            if s not in d:
+                d[s] = 1
+            else:
+                d[s] += 1
+        for j in nums2:
+            if j in d:
+                a.append(j)
+                d[j] -= 1
+                if d[j] < 1:
+                    del d[j]
+        return a
