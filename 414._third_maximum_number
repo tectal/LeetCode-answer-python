@@ -1,0 +1,15 @@
+class Solution:
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums = list(set(nums))
+        if len(nums) < 3:
+            return max(nums)
+        top3 = sorted(nums)[:3]
+        for num in nums[3:]:
+            if num > top3[0]:
+                heapq.heappop(top3)
+                heapq.heappush(top3,num)
+        return top3[0]
