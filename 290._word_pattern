@@ -1,0 +1,21 @@
+class Solution:
+    def wordPattern(self, pattern, str):
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+        liststr = str.split(' ')
+        if len(pattern) != len(liststr):
+            return False
+        d = {}
+        for i in range(len(liststr)):
+            if pattern[i] in d:
+                if d[pattern[i]] != liststr[i]:
+                    return False
+            else:
+                for key in d:
+                    if d[key] == liststr[i]:
+                        return False
+                d[pattern[i]] = liststr[i]
+        return True
