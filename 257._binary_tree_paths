@@ -1,0 +1,29 @@
+# 递归+DFS
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def binaryTreePaths(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
+        def lujing(node, path):
+            if not node.left and not node.right:
+                res.append(path+[node.val])
+            if node.left:
+                lujing(node.left, path+[node.val])
+            if node.right:
+                lujing(node.right, path+[node.val])
+                
+        res = []
+        if not root:
+            return res
+        lujing(root, [])
+
+        return ['->'.join([str(val) for val in path]) for path in res]
