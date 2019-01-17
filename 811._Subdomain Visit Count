@@ -1,0 +1,23 @@
+class Solution:
+    def subdomainVisits(self, cpdomains):
+        """
+        :type cpdomains: List[str]
+        :rtype: List[str]
+        """
+        res_map = {}
+        for i in cpdomains:
+            res = i.split()
+            num = int(res[0])
+            addr = res[1]
+            if addr in res_map:
+                res_map[addr] += num
+            else:
+                res_map[addr] = num
+            
+            while '.' in addr:
+                addr = addr[addr.index('.')+1:]
+                if addr in res_map:
+                    res_map[addr] += num
+                else:
+                    res_map[addr] = num
+        return  [str(res_map[key])+' '+key for key in res_map]
