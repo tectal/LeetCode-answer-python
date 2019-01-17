@@ -1,0 +1,20 @@
+class Solution:
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        res = []
+        
+        for i in range(left,right+1):
+            aaa = i
+            flag = True
+            while i>0:
+                i,c = i // 10, i % 10 
+                if not c or aaa%c:
+                    flag = False
+                    break
+            if flag:
+                res.append(aaa)
+        return res
