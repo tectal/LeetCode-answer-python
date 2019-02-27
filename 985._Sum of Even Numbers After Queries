@@ -1,0 +1,21 @@
+过程：先求原始数组的偶数和；后面每一步再进行加减：
+数组的值是偶数，相加后也是偶数，那么偶数和加上给出的值
+数组的值是偶数，相加后是奇数，那么把数组的值减掉
+数组的值是奇数，相加后是偶数，那么把相加后的偶数加上
+
+class Solution:
+    def sumEvenAfterQueries(self, A: List[int], queries: List[List[int]]) -> List[int]:
+        ret = []
+        sm = sum(i for i in A if i%2==0)
+        for i,j in queries:
+            if A[j]%2==0:
+                if i%2==0:
+                    sm+=i
+                else:
+                    sm-=A[j]
+            else:
+                if i%2!=0:
+                    sm+=A[j]+i
+            A[j]+=i
+            ret.append(sm)
+        return ret
